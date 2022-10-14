@@ -1,4 +1,6 @@
 const Students = require("../models/student")
+const jwt = require("jsonwebtoken")
+const SECRET_KEY = "SCHOOLAPI"
 
   
       const createStudent = async (req, res) => {
@@ -6,9 +8,12 @@ const Students = require("../models/student")
           const {studentName, rollNo, studentClass,section,attendance,contact} = req.body
         
           try {
-            const teach = await Students.create({studentName, rollNo, studentClass,section,attendance,contact})
+            const student = await Students.create({studentName, rollNo, studentClass,section,attendance,contact})
+
+
+         return res.json(student)
+    
         
-            return res.json(teach)
           } catch (err) {
             console.log(err)
             return res.status(500).json(err)

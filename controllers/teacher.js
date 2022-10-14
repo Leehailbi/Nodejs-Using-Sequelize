@@ -11,8 +11,9 @@
           try {
             const teach = await Teachers.create({ teacherName, staffId, attendance, subjectTeacher,contact,classId})
             const data = await teach.save()
-        
-            return res.json(data)
+
+      
+         return res.json(data)
           } catch (err) {
             console.log(err)
             return res.status(500).json(err)

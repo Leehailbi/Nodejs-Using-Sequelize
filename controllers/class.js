@@ -2,50 +2,23 @@
     const Classes = require("../models/class")
     const Teachers = require("../models/teacher")
     const db =require("../models/index")
+    const jwt = require("jsonwebtoken")
 
     const createClass= async (req, res) => {
         const {className, section, teacherId,employeeId,numberOfStudent} = req.body
       
         try {
           const classes = await Classes.create({ className, section, employeeId ,numberOfStudent, teacherId})
-          const classdata= await classes.save()
-
-      
-          return res.json(classdata)
+          const classData= await classes.save()
+          
+          return res.json(classData)
         } catch (err) {
           console.log(err)
           //return res.status(500).json(err)
         }
       }
       
-    // const getClass = async (req, res) => {
-    //     try {
-    //       const getclass = await Classes.findAll()
-      
-    //       return res.json(getclass)
-    //     } catch (err) {
-    //       console.log(err)
-    //       return res.status(500).json({ error: 'Something went wrong' })
-    //     }
-    //   }
-    // const getById = async(req,res)=>{
-    //     const id = req.params.id
-    //     try{
-    //         const classById = await Classes.findOne({
-    //             where :{
-    //                 id
-    //             }
-            
-    //         })
-    //         return res.json(classById)
-
-    //     } catch(err){
-    //         console.log(err)
-    //         return res.status(500).json({
-    //             error : "Something went wrong"
-    //         })
-    //     }
-    // }
+    
 
     const updateClass = async(req,res)=>{
         const id = req.params.id
@@ -119,4 +92,6 @@
         }
     }
 
-module.exports ={deleteClass,createClass,updateClass, getAll,getsById}
+
+
+module.exports ={deleteClass,createClass,updateClass, getAll,getsById,}

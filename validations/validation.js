@@ -54,5 +54,20 @@ const studentRules = (method) => {
     }
 
 
+  const userRules = (method) => {
+      return [
+        check("email", "Enter the valid email").isEmail()
+          .trim()
+          .notEmpty()
+          .isLength({ min: 1, max: 15 })
+          .withMessage(
+            " Email Name,  must contain a special characeter @"
+          ),check("password", "Password is required").notEmpty()
+          .isLength({ min:8})
+          
+      ]
+    }
 
-module.exports ={classRules,teacherRules,studentRules}
+
+
+module.exports ={classRules,teacherRules,studentRules,userRules}

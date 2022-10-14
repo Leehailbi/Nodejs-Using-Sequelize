@@ -4,11 +4,13 @@ const sequelize  = require("../database/connection")
 module.exports = sequelize.define("Teachers",{
     teacherName:{
         type : Sequelize.STRING,
-        allowNull :false
+        allowNull :false,
+        required :true
     },
     staffId : {
         type : Sequelize.STRING,
-        allowNull :false
+        allowNull :false,
+        required : true
         
     },
     attendance : {
@@ -21,8 +23,8 @@ module.exports = sequelize.define("Teachers",{
     },
     contact:{
         type :Sequelize.STRING,
-        allowNull :false
-       
+        allowNull :false,
+        required :true       
     },
     classId:{
         type : Sequelize.INTEGER,
